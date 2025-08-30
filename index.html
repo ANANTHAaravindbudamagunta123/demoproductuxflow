@@ -7,54 +7,44 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      text-align: center;
+      padding: 60px;
     }
 
     .container {
-      text-align: center;
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
     }
 
-    h1 {
-      margin-bottom: 20px;
-      color: #333;
-    }
-
-    .btn {
+    a {
       display: inline-block;
-      margin: 10px;
       padding: 12px 25px;
-      font-size: 16px;
-      font-weight: bold;
+      background-color: #4CAF50;
       color: white;
-      background: #4CAF50;
-      border: none;
-      border-radius: 8px;
       text-decoration: none;
+      font-size: 18px;
+      border-radius: 8px;
       transition: all 0.3s ease;
     }
 
-    .btn:hover {
-      background: #45a049;
+    a:hover {
+      background-color: #45a049;
       transform: scale(1.05);
-      box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
     }
   </style>
 </head>
 <body>
+  <h1>Welcome 🚀</h1>
+  <p>Select an option below:</p>
   <div class="container">
-    <h1>Welcome 🚀</h1>
-    <a href="uxflowdemo.html" class="btn">UX Flow Demo</a>
-    <a href="uxflow.html" class="btn">UX Flow</a>
-    <a href="demoproduct.html" class="btn">Demo Product View</a>
+    <a href="uxflowdemo.html">Click me for UX Flow Chart</a>
+    <a href="uxflow.html">Click me for UX Flow</a>
+    <a href="demoproduct.html">Click me for Demo Product View</a>
   </div>
 </body>
 </html>
