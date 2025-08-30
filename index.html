@@ -1,15 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    }
+
+    .container {
+      text-align: center;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background: #4CAF50;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #45a049;
+      transform: scale(1.05);
+      box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-    <button><a href="uxflowdemo.html">Click me for Uxflow Chart</button>
-    <button><a href="uxflow.html">click me for uxflow </button>
-    <button><a href="demoproduct.html">click me for demo product view</button>
-    </div>
+  <div class="container">
+    <h1>Welcome 🚀</h1>
+    <a href="uxflowdemo.html" class="btn">UX Flow Demo</a>
+    <a href="uxflow.html" class="btn">UX Flow</a>
+    <a href="demoproduct.html" class="btn">Demo Product View</a>
+  </div>
 </body>
 </html>
