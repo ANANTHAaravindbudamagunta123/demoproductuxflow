@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lightweight Analytics App - Wireframe</title>
+  <style>
+    /* Simple reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent:#7c3aed; --glass:rgba(255,255,255,0.04);
+      --glass-2:rgba(255,255,255,0.02); --success:#10b981; --danger:#ef4444;
+      --radius:12px; --gap:18px; font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    body{background:linear-gradient(180deg,#071027 0%,#071426 100%);color:#e6eef8;min-height:100vh;padding:28px}
+    .app{max-width:1100px;margin:0 auto;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:16px;padding:18px;box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+
+    /* Top header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 4px 20px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#4f46e5);display:flex;align-items:center;justify-content:center;font-weight:700}
+    .brand h1{font-size:18px;letter-spacing:0.2px}
+    .brand p{font-size:12px;color:var(--muted)}
+
+    /* Layout */
+    .layout{display:grid;grid-template-columns:260px 1fr;gap:18px}
+    nav{background:var(--card);border-radius:12px;padding:14px;min-height:520px}
+    nav ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    nav button{display:flex;align-items:center;gap:10px;padding:12px;border-radius:10px;background:transparent;border:0;color:inherit;text-align:left;cursor:pointer}
+    nav button:hover{background:var(--glass)}
+    nav button.active{background:linear-gradient(90deg,rgba(124,58,237,0.14),rgba(79,70,229,0.08));box-shadow:inset 0 0 0 1px rgba(124,58,237,0.08)}
+    .user{margin-top:18px;padding:10px;border-radius:10px;background:var(--glass-2);font-size:13px}
+
+    main{min-height:520px;background:transparent;padding:10px}
+    .screen{display:none}
+    .screen.active{display:block}
+
+    /* Login */
+    .card{background:var(--card);padding:18px;border-radius:12px}
+    .login-grid{display:grid;gap:12px}
+    input,select{padding:10px;border-radius:8px;border:0;background:var(--glass);color:inherit}
+    .btn{background:var(--accent);padding:10px 12px;border-radius:10px;border:0;color:black;cursor:pointer}
+
+    /* Dashboard */
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+    .kpi{background:var(--glass);padding:12px;border-radius:10px}
+    .mini-chart{height:60px;background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent);border-radius:8px;margin-top:8px}
+
+    .content-grid{display:grid;grid-template-columns:1fr 380px;gap:12px}
+    .card.large{padding:18px;min-height:300px}
+
+    /* Insights */
+    .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+    .filters select{min-width:150px}
+    .table{margin-top:10px;border-radius:8px;overflow:hidden}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:10px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.04);font-size:13px}
+
+    /* 3D Viz placeholder */
+    .viz-3d{display:flex;align-items:center;justify-content:center;height:100%;perspective:900px}
+    .cube{width:200px;height:200px;position:relative;transform-style:preserve-3d;animation:spin 18s linear infinite}
+    .cube .face{position:absolute;width:200px;height:200px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700}
+    .face.front{background:linear-gradient(135deg,#1f2937,#111827);transform:translateZ(100px)}
+    .face.back{background:linear-gradient(135deg,#0b1220,#071127);transform:rotateY(180deg) translateZ(100px)}
+    .face.right{background:linear-gradient(135deg,#111827,#0b1220);transform:rotateY(90deg) translateZ(100px)}
+    .face.left{background:linear-gradient(135deg,#0b1220,#071127);transform:rotateY(-90deg) translateZ(100px)}
+    .face.top{background:linear-gradient(135deg,#0b1320,#071127);transform:rotateX(90deg) translateZ(100px)}
+    .face.bottom{background:linear-gradient(135deg,#071127,#030617);transform:rotateX(-90deg) translateZ(100px)}
+    @keyframes spin{from{transform:rotateX(0) rotateY(0)}to{transform:rotateX(360deg) rotateY(360deg)}}
+
+    /* AI suggestions */
+    .suggestion{background:linear-gradient(90deg, rgba(16,185,129,0.06), rgba(16,185,129,0.02));padding:12px;border-radius:10px;margin-bottom:10px}
+    .controls{display:flex;gap:8px;align-items:center}
+
+    footer{margin-top:12px;font-size:13px;color:var(--muted);text-align:center}
+
+    /* Responsive */
+    @media (max-width:900px){.layout{grid-template-columns:1fr}.content-grid{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}nav{order:2}}
+    option{
+        color:black;
+    }
+  </style>
+</head>
+<body>
+  <div class="app" role="application">
+    <header>
+      <div class="brand">
+        <div class="logo">A</div>
+        <div>
+          <h1>Lightweight Analytics</h1>
+          <p>Integrated Amazon Seller Insights</p>
+        </div>
+      </div>
+      <div>
+        <button class="btn" id="quick-login">Quick Login (demo)</button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <nav aria-label="Main Navigation">
+        <ul>
+          <li><button class="nav-btn active" data-target="dashboard">Dashboard</button></li>
+          <li><button class="nav-btn" data-target="insights">Insights</button></li>
+          <li><button class="nav-btn" data-target="viz3d">3D Visualization</button></li>
+          <li><button class="nav-btn" data-target="ai">AI Suggestions</button></li>
+          <li><button class="nav-btn" data-target="settings">Settings</button></li>
+        </ul>
+
+        <div class="user">
+          <strong>Seller:</strong>
+          <div>Demo_Seller_001</div>
+          <div style="margin-top:8px;font-size:12px;color:var(--muted)">Region: India • Products: 12</div>
+        </div>
+      </nav>
+
+      <main>
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="screen active">
+          <div class="kpis">
+            <div class="kpi card">
+              <div>Total Sales</div>
+              <div style="font-size:20px;margin-top:6px">₹ 1,24,780</div>
+              <div class="mini-chart"></div>
+            </div>
+            <div class="kpi card">
+              <div>Profit</div>
+              <div style="font-size:20px;margin-top:6px">₹ 38,410</div>
+              <div class="mini-chart"></div>
+            </div>
+            <div class="kpi card">
+              <div>Loss</div>
+              <div style="font-size:20px;margin-top:6px">₹ 4,120</div>
+              <div class="mini-chart"></div>
+            </div>
+          </div>
+
+          <div class="content-grid">
+            <div class="card large">
+              <h3>Sales Overview</h3>
+              <p style="color:var(--muted);margin-top:8px">Quick glance into your day-to-day sales trends and top regions.</p>
+              <div style="height:220px;border-radius:10px;background:var(--glass);margin-top:12px;display:flex;align-items:center;justify-content:center">[Chart placeholder — line/area]</div>
+            </div>
+
+            <aside class="card">
+              <h4>Quick Filters</h4>
+              <div style="margin-top:8px" class="filters">
+                <select id="timeRange"><option>Last 7 days</option><option>Last 30 days</option><option>Last 90 days</option><option>YTD</option></select>
+                <select id="regionSelect"><option>All Countries</option><option>India</option><option>USA</option><option>UK</option></select>
+              </div>
+
+              <h4 style="margin-top:10px">Alerts</h4>
+              <div style="margin-top:8px;color:var(--muted);font-size:13px">No critical alerts. AI suggestions available.</div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- INSIGHTS -->
+        <section id="insights" class="screen">
+          <div class="card">
+            <h3>Insights & Reports</h3>
+            <p style="color:var(--muted);margin-top:6px">Filter by region, climate, festival and time period to generate detailed reports.</p>
+
+            <div style="margin-top:12px" class="filters">
+              <select id="ins-time"><option>Daily</option><option>Weekly</option><option>Monthly</option><option>Quarterly</option></select>
+              <select id="ins-region"><option>Country</option><option>State</option><option>District</option></select>
+              <select id="ins-climate"><option>All Climates</option><option>Summer</option><option>Winter</option><option>Rainy</option></select>
+              <select id="ins-festival"><option>All</option><option>Diwali</option><option>Christmas</option><option>Eid</option></select>
+              <button class="btn" id="generate-report">Generate Insights</button>
+            </div>
+
+            <div class="table card" style="margin-top:12px">
+              <table>
+                <thead><tr><th>Product</th><th>Region</th><th>Sales</th><th>Profit</th></tr></thead>
+                <tbody>
+                  <tr><td>Product A</td><td>Delhi</td><td>₹ 24,000</td><td>₹ 8,400</td></tr>
+                  <tr><td>Product B</td><td>Mumbai</td><td>₹ 18,400</td><td>₹ 5,200</td></tr>
+                  <tr><td>Product C</td><td>Bengaluru</td><td>₹ 15,600</td><td>₹ 3,800</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div style="margin-top:12px;padding:12px;border-radius:10px;background:var(--glass)">
+              <strong>Summary:</strong>
+              <p style="color:var(--muted);margin-top:8px">Top performing region: Delhi. Festival uplift (Diwali) observed in northern states. Consider targeted discounts for mid-tier SKUs.</p>
+              <div style="margin-top:8px"><button class="btn" id="view-3d">View in 3D</button></div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 3D VIZ -->
+        <section id="viz3d" class="screen">
+          <div class="card large">
+            <h3>3D Visualization</h3>
+            <p style="color:var(--muted);margin-top:6px">Interact with the 3D representation of sales vs profit across regions.</p>
+            <div class="viz-3d" style="margin-top:12px">
+              <div class="cube" id="cube">
+                <div class="face front">Sales</div>
+                <div class="face back">Profit</div>
+                <div class="face right">Region</div>
+                <div class="face left">Trend</div>
+                <div class="face top">Season</div>
+                <div class="face bottom">Forecast</div>
+              </div>
+            </div>
+            <div style="margin-top:12px" class="controls">
+              <button class="btn" id="pause-spin">Pause Spin</button>
+              <button class="btn" id="get-suggestions-2">Get Suggestions</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- AI SUGGESTIONS -->
+        <section id="ai" class="screen">
+          <div class="card">
+            <h3>AI Suggestions</h3>
+            <p style="color:var(--muted);margin-top:6px">Automated recommendations based on detected negative trends. Choose alert channels and revenue targets below.</p>
+
+            <div style="margin-top:12px" class="suggestion">
+              <strong>Alert:</strong> Sales dropped 18% in West Region compared to last week. Suggested action: Flash discount (10%) + targeted ads. Competitor X ran 2-day discount in that region.
+            </div>
+
+            <div style="margin-top:12px" class="card">
+              <label>Set Revenue Target (monthly)</label>
+              <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+                <input id="rev-target" placeholder="₹ 50,000" />
+                <button class="btn" id="apply-target">Apply</button>
+              </div>
+              <div style="margin-top:12px;color:var(--muted)">Delivery: <select id="delivery"><option>Email</option><option>WhatsApp</option></select></div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- SETTINGS -->
+        <section id="settings" class="screen">
+          <div class="card">
+            <h3>Settings & Notifications</h3>
+            <p style="color:var(--muted);margin-top:6px">Manage alert frequency, channels and seller preferences.</p>
+            <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+              <label><input type="checkbox" checked /> Email Alerts</label>
+              <label><input type="checkbox" /> WhatsApp Alerts</label>
+              <label>Alert Frequency: <select><option>Immediate</option><option>Daily Summary</option><option>Weekly Summary</option></select></label>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    
+  </div>
+
+  <script>
+    // Simple SPA navigation
+    const navBtns = document.querySelectorAll('.nav-btn');
+    const screens = document.querySelectorAll('.screen');
+    navBtns.forEach(b=>b.addEventListener('click', ()=>{
+      navBtns.forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      const target = b.dataset.target;
+      screens.forEach(s=>s.classList.toggle('active', s.id===target));
+    }));
+
+    // Quick login demo
+    document.getElementById('quick-login').addEventListener('click', ()=>{
+      // highlight dashboard
+      document.querySelector('.nav-btn[data-target="dashboard"]').click();
+      alert('Demo login: Demo_Seller_001');
+    });
+
+    // View in 3D button
+    document.getElementById('view-3d').addEventListener('click', ()=>{
+      document.querySelector('.nav-btn[data-target="viz3d"]').click();
+    });
+
+    // Pause spin
+    const cube = document.getElementById('cube');
+    document.getElementById('pause-spin').addEventListener('click', ()=>{
+      if(cube.style.animationPlayState === 'paused') cube.style.animationPlayState = 'running';
+      else cube.style.animationPlayState = 'paused';
+    });
+
+    // Small demo: Generate insights
+    document.getElementById('generate-report').addEventListener('click', ()=>{
+      alert('Generating insights... (demo)');
+    });
+
+    // Apply revenue target demo
+    document.getElementById('apply-target').addEventListener('click', ()=>{
+      const t = document.getElementById('rev-target').value || '₹ 0';
+      alert('Revenue target set to ' + t + '. AI will generate steps (demo)');
+      document.querySelector('.nav-btn[data-target="ai"]').click();
+    });
+
+    // Get suggestions from 3D demo
+    document.getElementById('get-suggestions-2').addEventListener('click', ()=>{
+      document.querySelector('.nav-btn[data-target="ai"]').click();
+    });
+  </script>
+</body>
+</html>
