@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wireframe Flow - Analytics App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .wireframe {
+      border: 2px dashed #555;
+      padding: 20px;
+      margin: 20px;
+      width: 250px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: #fff;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+      font-size: 14px;
+    }
+    .flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .arrow {
+      margin: 10px 0;
+      font-size: 20px;
+      color: #333;
+    }
+    .row {
+      display: flex;
+      gap: 60px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Analytics App UX Flow (Wireframe)</h2>
+  <div class="flow">
+
+    <div class="wireframe">Login / Sign Up</div>
+    <div class="arrow">⬇</div>
+
+    <div class="wireframe">Seller Dashboard<br>(Overview of KPIs)</div>
+    <div class="arrow">⬇</div>
+
+    <div class="row">
+      <div class="flow">
+        <div class="wireframe">What-If Forecasting Tool<br>(Adjust variables)</div>
+        <div class="arrow">⬇</div>
+        <div class="wireframe">Scenario Results<br>(Graphs, Trends)</div>
+      </div>
+
+      <div class="flow">
+        <div class="wireframe">Sales & Inventory Insights</div>
+        <div class="arrow">⬇</div>
+        <div class="wireframe">Automated Suggestions<br>(Actions to improve)</div>
+      </div>
+    </div>
+
+    <div class="arrow">⬇</div>
+    <div class="wireframe">Reports Export<br>(CSV, PDF, Excel)</div>
+  </div>
+</body>
+</html>
